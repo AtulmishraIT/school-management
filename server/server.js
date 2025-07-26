@@ -55,7 +55,7 @@ const io = new SocketIO(server, {
 // Middleware
 app.use(cors(
   {
-    origin: ["https://school-management-neon-seven.vercel.app/"],
+    origin: ["https://school-management-neon-seven.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true,
   }
