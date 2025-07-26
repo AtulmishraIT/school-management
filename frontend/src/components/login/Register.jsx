@@ -48,7 +48,7 @@ export function Signup() {
         email: formData.email,
         role: formData.role,
       }
-      await axios.post("https://school-management-api-gray-gamma.vercel.app/api/user/register",formData)
+      await axios.post("https://school-management-it5j.onrender.com/api/user/register",formData)
       signup(userData)
       alert("You have to login also")
     } catch (err) {

@@ -42,9 +42,9 @@ export default function Dashboard() {
   const fetchDashboardData = async () => {
     try {
       const [statsRes, activityRes, eventsRes] = await Promise.all([
-        axios.get("https://school-management-api-gray-gamma.vercel.app/api/dashboard/stats"),
-        axios.get("https://school-management-api-gray-gamma.vercel.app/api/dashboard/activity"),
-        axios.get("https://school-management-api-gray-gamma.vercel.app/api/dashboard/events"),
+        axios.get("https://school-management-it5j.onrender.com/api/dashboard/stats"),
+        axios.get("https://school-management-it5j.onrender.com/api/dashboard/activity"),
+        axios.get("https://school-management-it5j.onrender.com/api/dashboard/events"),
       ]);
 
       setStats(statsRes.data);

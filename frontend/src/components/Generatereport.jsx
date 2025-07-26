@@ -18,7 +18,7 @@ export default function GenerateReportForm() {
 
   const fetchStudents = async () => {
   try {
-    const res = await axios.get("https://school-management-api-gray-gamma.vercel.app/api/students")
+    const res = await axios.get("https://school-management-it5j.onrender.com/api/students")
     // Adjust depending on actual response shape
     const data = Array.isArray(res.data)
       ? res.data
@@ -42,7 +42,7 @@ export default function GenerateReportForm() {
 
     setIsGenerating(true)
     try {
-      const res = await axios.post("https://school-management-api-gray-gamma.vercel.app/api/report-cards/generate", {
+      const res = await axios.post("https://school-management-it5j.onrender.com/api/report-cards/generate", {
         studentId: selectedStudent,
         academicYear,
         term,

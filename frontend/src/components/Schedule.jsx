@@ -52,7 +52,7 @@ export default function Schedule() {
       const startDate = getViewStartDate()
       const endDate = getViewEndDate()
 
-      const response = await axios.get("https://school-management-api-gray-gamma.vercel.app/api/schedule/events", {
+      const response = await axios.get("https://school-management-it5j.onrender.com/api/schedule/events", {
         params: {
           startDate: startDate.toISOString(),
           endDate: endDate.toISOString(),

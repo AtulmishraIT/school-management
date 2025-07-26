@@ -58,7 +58,7 @@ export function Timetable() {
       if (teacherUser?.role === "teacher") {
         params.teacherId = teacherUser.id
       }
-      const response = await axios.get(`https://school-management-api-gray-gamma.vercel.app/api/timetable`, { params })
+      const response = await axios.get(`https://school-management-it5j.onrender.com/api/timetable`, { params })
 
 
       console.log("Timetable data response:", response.data)
@@ -72,7 +72,7 @@ export function Timetable() {
 
   const fetchClasses = async () => {
     try {
-      const response = await axios.get("https://school-management-api-gray-gamma.vercel.app/api/classes")
+      const response = await axios.get("https://school-management-it5j.onrender.com/api/classes")
       setClasses(response.data)
       if (response.data.length > 0 && !selectedClass) {
         setSelectedClass(response.data[0]._id)
@@ -84,7 +84,7 @@ export function Timetable() {
 
   const fetchSubjects = async () => {
     try {
-      const response = await axios.get("https://school-management-api-gray-gamma.vercel.app/api/subjects", {
+      const response = await axios.get("https://school-management-it5j.onrender.com/api/subjects", {
         params: { teacherId: teacherUser?.role === "teacher" ? teacherUser.id : null },
       })
       setSubjects(response.data)
@@ -125,13 +125,13 @@ export function Timetable() {
     try {
       console.log("Edit",editingEntry)
       if (editingEntry) {
-        const response = await axios.put("https://school-management-api-gray-gamma.vercel.app/api/timetable", entryData)
+        const response = await axios.put("https://school-management-it5j.onrender.com/api/timetable", entryData)
         console.log("Update response:", response.data)
         if (response.data.error) {
           throw new Error(response.data.error)
         }
       } else {
-        await axios.post("https://school-management-api-gray-gamma.vercel.app/api/timetable", entryData)
+        await axios.post("https://school-management-it5j.onrender.com/api/timetable", entryData)
       }
       fetchTimetableData()
       setShowAddModal(false)
@@ -145,7 +145,7 @@ export function Timetable() {
   const handleDeleteEntry = async (entryId) => {
     if (window.confirm("Are you sure you want to delete this entry?")) {
       try {
-        await axios.delete(`https://school-management-api-gray-gamma.vercel.app/api/timetable/${entryId}`)
+        await axios.delete(`https://school-management-it5j.onrender.com/api/timetable/${entryId}`)
         fetchTimetableData()
       } catch (error) {
         console.error("Error deleting timetable entry:", error)

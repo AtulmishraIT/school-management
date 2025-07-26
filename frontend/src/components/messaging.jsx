@@ -296,7 +296,7 @@ const BulkEmailModal = ({ isOpen, onClose, currentUser }) => {
 
     setIsLoading(true)
     try {
-      await axios.post("https://school-management-api-gray-gamma.vercel.app/api/email/send-bulk", {
+      await axios.post("https://school-management-it5j.onrender.com/api/email/send-bulk", {
         senderId: currentUser.id,
         subject,
         message,
@@ -638,8 +638,8 @@ export function Messaging() {
     const fetchData = async () => {
       try {
         const [usersResponse, groupsResponse] = await Promise.all([
-          axios.get("https://school-management-api-gray-gamma.vercel.app/api/user/allusers"),
-          axios.get(`https://school-management-api-gray-gamma.vercel.app/api/groups/user/${currentUser.id}`),
+          axios.get("https://school-management-it5j.onrender.com/api/user/allusers"),
+          axios.get(`https://school-management-it5j.onrender.com/api/groups/user/${currentUser.id}`),
         ])
 
         const filteredUsers = usersResponse.data.filter((user) => user._id !== currentUser?.id)
@@ -684,7 +684,7 @@ export function Messaging() {
   const fetchConversationHistory = async (otherUserId) => {
     try {
       const response = await axios.get(
-        `https://school-management-api-gray-gamma.vercel.app/api/messages/conversation/${currentUser.id}/${otherUserId}`,
+        `https://school-management-it5j.onrender.com/api/messages/conversation/${currentUser.id}/${otherUserId}`,
       )
       setMessages((prev) => ({
         ...prev,
@@ -697,7 +697,7 @@ export function Messaging() {
 
   const fetchGroupMessages = async (groupId) => {
     try {
-      const response = await axios.get(`https://school-management-api-gray-gamma.vercel.app/api/groups/${groupId}/messages`)
+      const response = await axios.get(`https://school-management-it5j.onrender.com/api/groups/${groupId}/messages`)
       setGroupMessages((prev) => ({
         ...prev,
         [groupId]: response.data,
@@ -732,7 +732,7 @@ export function Messaging() {
     try {
       socket.emit("sendMessage", messageData)
 
-      await axios.post("https://school-management-api-gray-gamma.vercel.app/api/messages/send", {
+      await axios.post("https://school-management-it5j.onrender.com/api/messages/send", {
         senderId: currentUser.id,
         receiverId: selectedChat._id || selectedChat.id,
         message: newMessage.trim(),
@@ -759,7 +759,7 @@ export function Messaging() {
 
   const handleSendGroupMessage = async () => {
     try {
-      const response = await axios.post(`https://school-management-api-gray-gamma.vercel.app/api/groups/${selectedChat._id}/messages`, {
+      const response = await axios.post(`https://school-management-it5j.onrender.com/api/groups/${selectedChat._id}/messages`, {
         senderId: currentUser.id,
         message: newMessage.trim(),
         messageType: "text",
@@ -783,7 +783,7 @@ export function Messaging() {
 
   const handleCreateGroup = async (groupData) => {
     try {
-      const response = await axios.post("https://school-management-api-gray-gamma.vercel.app/api/groups", {
+      const response = await axios.post("https://school-management-it5j.onrender.com/api/groups", {
         ...groupData,
         createdBy: currentUser.id,
       })
@@ -799,7 +799,7 @@ export function Messaging() {
     if (!selectedChat || chatType !== "group") return
 
     try {
-      await axios.post(`https://school-management-api-gray-gamma.vercel.app/api/groups/${selectedChat._id}/email-announcement`, {
+      await axios.post(`https://school-management-it5j.onrender.com/api/groups/${selectedChat._id}/email-announcement`, {
         senderId: currentUser.id,
         ...emailData,
       })

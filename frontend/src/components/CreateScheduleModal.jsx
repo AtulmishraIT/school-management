@@ -17,7 +17,7 @@ export default function CreateScheduleModal({ onClose, onEventCreated, user }) {
 
     setLoading(true)
     try {
-      await axios.post("https://school-management-api-gray-gamma.vercel.app/api/schedule/events", {
+      await axios.post("https://school-management-it5j.onrender.com/api/schedule/events", {
         title,
         start,
         end,

@@ -47,7 +47,7 @@ export default function Resources() {
   const fetchResources = async () => {
   setLoading(true)
   try {
-    const response = await axios.get("https://school-management-api-gray-gamma.vercel.app/api/resources?limit=1000", {
+    const response = await axios.get("https://school-management-it5j.onrender.com/api/resources?limit=1000", {
       params: {
         folderId: currentFolder,
         category: selectedCategory !== "all" ? selectedCategory : undefined,
@@ -112,7 +112,7 @@ export default function Resources() {
 
   const fetchFolders = async () => {
     try {
-      const response = await axios.get("https://school-management-api-gray-gamma.vercel.app/api/resources/folders", {
+      const response = await axios.get("https://school-management-it5j.onrender.com/api/resources/folders", {
         params: { parentId: currentFolder },
       })
       setFolders(response.data)
@@ -139,7 +139,7 @@ export default function Resources() {
     formData.append("uploadedBy", user.id)
 
     try {
-      const response = await axios.post("https://school-management-api-gray-gamma.vercel.app/api/resources/upload", formData, {
+      const response = await axios.post("https://school-management-it5j.onrender.com/api/resources/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
         onUploadProgress: (progressEvent) => {
           const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total)
@@ -159,7 +159,7 @@ export default function Resources() {
 
   const handleCreateFolder = async (folderName) => {
     try {
-      const response = await axios.post("https://school-management-api-gray-gamma.vercel.app/api/folders", {
+      const response = await axios.post("https://school-management-it5j.onrender.com/api/folders", {
         name: folderName,
         parentId: currentFolder,
         createdBy: user.id,
@@ -174,7 +174,7 @@ export default function Resources() {
 
   const handleDownload = async (resourceId, fileName) => {
     try {
-      const response = await axios.get(`https://school-management-api-gray-gamma.vercel.app/api/resources/${resourceId}/download`, {
+      const response = await axios.get(`https://school-management-it5j.onrender.com/api/resources/${resourceId}/download`, {
         responseType: "blob",
       })
 
@@ -193,7 +193,7 @@ export default function Resources() {
   const handleDelete = async (resourceId) => {
     if (window.confirm("Are you sure you want to delete this resource?")) {
       try {
-        await axios.delete(`https://school-management-api-gray-gamma.vercel.app/api/resources/${resourceId}`)
+        await axios.delete(`https://school-management-it5j.onrender.com/api/resources/${resourceId}`)
         setResources((prev) => prev.filter((r) => r._id !== resourceId))
       } catch (error) {
         console.error("Error deleting resource:", error)
@@ -203,7 +203,7 @@ export default function Resources() {
 
   const toggleStar = async (resourceId) => {
     try {
-      await axios.put(`https://school-management-api-gray-gamma.vercel.app/api/resources/${resourceId}/star`)
+      await axios.put(`https://school-management-it5j.onrender.com/api/resources/${resourceId}/star`)
       setResources((prev) => prev.map((r) => (r._id === resourceId ? { ...r, isStarred: !r.isStarred } : r)))
     } catch (error) {
       console.error("Error toggling star:", error)

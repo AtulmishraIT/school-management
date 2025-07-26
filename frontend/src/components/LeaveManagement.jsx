@@ -35,8 +35,8 @@ export default function LeaveManagement() {
     setLoading(true)
   try {
     const endpoint = user.role === "admin" 
-      ? "https://school-management-api-gray-gamma.vercel.app/api/leaves"
-      : `https://school-management-api-gray-gamma.vercel.app/api/leaves/user/${user.id}`
+      ? "https://school-management-it5j.onrender.com/api/leaves"
+      : `https://school-management-it5j.onrender.com/api/leaves/user/${user.id}`
 
     const response = await axios.get(endpoint)
     // If response.data is an object with a 'leaves' property, use that
@@ -479,7 +479,7 @@ function LeaveApplicationModal({ onClose, onSuccess }) {
         ...formData,
         applicantId: user.id,
       }
-      await axios.post("https://school-management-api-gray-gamma.vercel.app/api/leaves/apply", {
+      await axios.post("https://school-management-it5j.onrender.com/api/leaves/apply", {
   leaveType: formData.type, // or just use leaveType in your form
   applicantType: user.role || "student", // or set as needed
   startDate: formData.startDate,

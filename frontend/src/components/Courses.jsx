@@ -44,7 +44,7 @@ export default function Courses() {
       params.instructorId = user.id
     }
 
-    const response = await axios.get("https://school-management-api-gray-gamma.vercel.app/api/courses", { params: {
+    const response = await axios.get("https://school-management-it5j.onrender.com/api/courses", { params: {
       userId: user.id,
       userRole: user.role
     }
@@ -60,7 +60,7 @@ export default function Courses() {
 
   const handleCreateCourse = async (courseData) => {
     try {
-      const response = await axios.post("https://school-management-api-gray-gamma.vercel.app/api/courses", {
+      const response = await axios.post("https://school-management-it5j.onrender.com/api/courses", {
         ...courseData,
         instructorId: user.id,
       })
@@ -74,7 +74,7 @@ export default function Courses() {
   const handleDeleteCourse = async (courseId) => {
     if (window.confirm("Are you sure you want to delete this course?")) {
       try {
-        await axios.delete(`https://school-management-api-gray-gamma.vercel.app/api/courses/${courseId}`)
+        await axios.delete(`https://school-management-it5j.onrender.com/api/courses/${courseId}`)
         setCourses((prev) => prev.filter((c) => c._id !== courseId))
       } catch (error) {
         console.error("Error deleting course:", error)
