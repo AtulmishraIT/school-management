@@ -46,14 +46,20 @@ const app = express()
 const server = http.createServer(app)
 const io = new SocketIO(server, {
   cors: {
-    origin: ["https://school-management-neon-seven.vercel.app/"],
+    origin: ["http://localhost:3000", "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   },
 })
 
 // Middleware
-app.use(cors())
+app.use(cors(
+  {
+    origin: ["https://school-management-neon-seven.vercel.app/"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  }
+))
 app.use(express.json({ limit: "50mb" }))
 app.use(express.urlencoded({ extended: true, limit: "50mb" }))
 
