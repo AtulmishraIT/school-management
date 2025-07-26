@@ -46,7 +46,7 @@ const app = express()
 const server = http.createServer(app)
 const io = new SocketIO(server, {
   cors: {
-    origin: ["http://localhost:3000", "http://localhost:5173"],
+    origin: ["https://school-management-atulmishra.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   },
