@@ -98,10 +98,12 @@ const upload = multer({
 })
 
 // MongoDB Connection
-mongoose
-  .connect(process.env.MONGO_URL, {})
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error("MongoDB connection error:", err))
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("✅ MongoDB connected"))
+.catch((err) => console.error("❌ MongoDB connection error:", err));
 
 app.use("/api/report-cards", reportCardRoutes)
 app.use("/api/leaves", leaveRoutes)
