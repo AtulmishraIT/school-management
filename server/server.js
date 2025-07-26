@@ -55,7 +55,7 @@ const io = new SocketIO(server, {
 // Middleware
 app.use(cors(
   {
-    origin: ["https://school-management-atulmishra.vercel.app/login"],
+    origin: ["https://school-management-atulmishra.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true,
   }
