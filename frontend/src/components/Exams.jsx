@@ -34,7 +34,7 @@ import {
 import axios from "axios";
 import { PDFUploadGuide } from "../components/pdf-upload-guide";
 
-const API_BASE_URL = "http://localhost:5050/api";
+const API_BASE_URL = "https://school-management-api-gray-gamma.vercel.app/api";
 
 export default function Exams() {
   const { user } = useAuth();

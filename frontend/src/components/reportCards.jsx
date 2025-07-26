@@ -41,8 +41,8 @@ export default function ReportCards() {
       return
     }
       const endpoint = user.role === "student" 
-        ? `http://localhost:5050/api/report-cards/student/${user.id}`
-        : `http://localhost:5050/api/report-cards`
+        ? `https://school-management-api-gray-gamma.vercel.app/api/report-cards/student/${user.id}`
+        : `https://school-management-api-gray-gamma.vercel.app/api/report-cards`
 
       const response = await axios.get(endpoint)
       setReportCards(response.data)
@@ -84,7 +84,7 @@ export default function ReportCards() {
   const generateReportCard = async (studentId, term, year) => {
     setIsGenerating(true)
     try {
-      const response = await axios.post("http://localhost:5050/api/report-cards/generate", {
+      const response = await axios.post("https://school-management-api-gray-gamma.vercel.app/api/report-cards/generate", {
         studentId,
         term,
         academicYear: year,
@@ -102,7 +102,7 @@ export default function ReportCards() {
 
   const downloadReportCard = async (reportCardId) => {
     try {
-      const response = await axios.get(`http://localhost:5050/api/report-cards/${reportCardId}/download`, {
+      const response = await axios.get(`https://school-management-api-gray-gamma.vercel.app/api/report-cards/${reportCardId}/download`, {
         responseType: "blob",
       })
 

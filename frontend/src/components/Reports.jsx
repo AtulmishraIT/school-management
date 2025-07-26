@@ -49,8 +49,8 @@ export default function Reports() {
   const fetchInitialData = async () => {
     try {
       const [classesRes, subjectsRes] = await Promise.all([
-        axios.get("http://localhost:5050/api/classes"),
-        axios.get("http://localhost:5050/api/subjects"),
+        axios.get("https://school-management-api-gray-gamma.vercel.app/api/classes"),
+        axios.get("https://school-management-api-gray-gamma.vercel.app/api/subjects"),
       ])
       setClasses(classesRes.data)
       setSubjects(subjectsRes.data)
@@ -71,7 +71,7 @@ export default function Reports() {
         userRole: user.role,
       }
 
-      const response = await axios.get(`http://localhost:5050/api/reports/${activeTab}`, { params })
+      const response = await axios.get(`https://school-management-api-gray-gamma.vercel.app/api/reports/${activeTab}`, { params })
       setReportData((prev) => ({
         ...prev,
         [activeTab]: response.data,
@@ -149,7 +149,7 @@ export default function Reports() {
 
   const exportReport = async (format) => {
     try {
-      const response = await axios.get(`http://localhost:5050/api/reports/export/${activeTab}`, {
+      const response = await axios.get(`https://school-management-api-gray-gamma.vercel.app/api/reports/export/${activeTab}`, {
         params: {
           format,
           startDate: dateRange.startDate,

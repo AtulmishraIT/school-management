@@ -71,7 +71,7 @@ export default function Profile() {
     setMessage({ type: "", text: "" })
 
     try {
-      const response = await axios.put(`http://localhost:5050/api/user/profile/${user.id}`, profileData)
+      const response = await axios.put(`https://school-management-api-gray-gamma.vercel.app/api/user/profile/${user.id}`, profileData)
       updateUser(response.data.user)
       setMessage({ type: "success", text: "Profile updated successfully!" })
       setIsEditing(false)
@@ -100,7 +100,7 @@ export default function Profile() {
     }
 
     try {
-      await axios.put(`http://localhost:5050/api/user/password/${user.id}`, passwordData)
+      await axios.put(`https://school-management-api-gray-gamma.vercel.app/api/user/password/${user.id}`, passwordData)
       setMessage({ type: "success", text: "Password changed successfully!" })
       setPasswordData({ currentPassword: "", newPassword: "", confirmPassword: "" })
       setIsChangingPassword(false)
@@ -114,7 +114,7 @@ export default function Profile() {
   const handlePreferencesUpdate = async () => {
     setLoading(true)
     try {
-      await axios.put(`http://localhost:5050/api/user/preferences/${user.id}`, preferences)
+      await axios.put(`https://school-management-api-gray-gamma.vercel.app/api/user/preferences/${user.id}`, preferences)
       setMessage({ type: "success", text: "Preferences updated successfully!" })
     } catch (error) {
         console.log(error)

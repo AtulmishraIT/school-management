@@ -42,7 +42,7 @@ export default function Notifications() {
   const fetchNotifications = async () => {
     setLoading(true)
     try {
-      const response = await axios.get(`http://localhost:5050/api/notifications/${user.id}`)
+      const response = await axios.get(`https://school-management-api-gray-gamma.vercel.app/api/notifications/${user.id}`)
       setNotifications(response.data)
       console.log("Fetched notifications:", user.id)
     } catch (error) {
@@ -173,7 +173,7 @@ export default function Notifications() {
 
   const markAsRead = async (notificationIds) => {
     try {
-      await axios.put("http://localhost:5050/api/notifications/mark-read", {
+      await axios.put("https://school-management-api-gray-gamma.vercel.app/api/notifications/mark-read", {
         notificationIds: Array.isArray(notificationIds) ? notificationIds : [notificationIds],
       })
 
@@ -191,7 +191,7 @@ export default function Notifications() {
 
   const markAsUnread = async (notificationIds) => {
     try {
-      await axios.put("http://localhost:5050/api/notifications/mark-unread", {
+      await axios.put("https://school-management-api-gray-gamma.vercel.app/api/notifications/mark-unread", {
         notificationIds: Array.isArray(notificationIds) ? notificationIds : [notificationIds],
       })
 
@@ -210,7 +210,7 @@ export default function Notifications() {
   const deleteNotifications = async (notificationIds) => {
     if (window.confirm("Are you sure you want to delete the selected notifications?")) {
       try {
-        await axios.delete("http://localhost:5050/api/notifications", {
+        await axios.delete("https://school-management-api-gray-gamma.vercel.app/api/notifications", {
           data: { notificationIds: Array.isArray(notificationIds) ? notificationIds : [notificationIds] },
         })
 

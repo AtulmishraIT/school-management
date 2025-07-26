@@ -28,7 +28,7 @@ export function Login() {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   // Perform login request
-  const response = await axios.post("http://localhost:5050/api/user/login", formData);
+  const response = await axios.post("https://school-management-api-gray-gamma.vercel.app/api/user/login", formData);
   const resData = response.data;
   console.log("Login response:", resData);
 

@@ -52,7 +52,7 @@ export function Attendance({ currentUser }) {
     try {
       setLoading(true)
       console.log("Fetching classes...")
-      const response = await axios.get("http://localhost:5050/api/classes")
+      const response = await axios.get("https://school-management-api-gray-gamma.vercel.app/api/classes")
       console.log("Classes response:", response.data)
       setClasses(response.data)
 
@@ -72,7 +72,7 @@ export function Attendance({ currentUser }) {
   const fetchSubjects = async () => {
     try {
       console.log("Fetching subjects for teacher:", teacherUser.id)
-      const response = await axios.get("http://localhost:5050/api/subjects", {
+      const response = await axios.get("https://school-management-api-gray-gamma.vercel.app/api/subjects", {
         params: { teacherId: teacherUser.id },
       })
       console.log("Subjects response:", response.data)
@@ -85,7 +85,7 @@ export function Attendance({ currentUser }) {
   const fetchStudents = async () => {
     try {
       console.log("Fetching students for class:", selectedClass, "teacher:", teacherUser.id)
-      const response = await axios.get(`http://localhost:5050/api/students/class/${selectedClass}`, {
+      const response = await axios.get(`https://school-management-api-gray-gamma.vercel.app/api/students/class/${selectedClass}`, {
         params: { teacherId: teacherUser.id },
       })
       console.log("Students response:", response.data)
@@ -99,7 +99,7 @@ export function Attendance({ currentUser }) {
 const handleExport = async () => {
   try {
     const dateString = selectedDate.toISOString().split("T")[0]
-    const response = await axios.get("http://localhost:5050/api/attendance/export", {
+    const response = await axios.get("https://school-management-api-gray-gamma.vercel.app/api/attendance/export", {
       params: {
         classId: selectedClass,
         date: dateString,
@@ -133,7 +133,7 @@ const handleExport = async () => {
         teacherId: teacherUser.id,
       })
 
-      const response = await axios.get("http://localhost:5050/api/attendance", {
+      const response = await axios.get("https://school-management-api-gray-gamma.vercel.app/api/attendance", {
         params: {
           classId: selectedClass,
           date: dateString,
@@ -157,7 +157,7 @@ const handleExport = async () => {
         year: selectedDate.getFullYear(),
       })
 
-      const response = await axios.get("http://localhost:5050/api/attendance/stats", {
+      const response = await axios.get("https://school-management-api-gray-gamma.vercel.app/api/attendance/stats", {
         params: {
           classId: selectedClass,
           month: selectedDate.getMonth() + 1,
@@ -183,7 +183,7 @@ const handleExport = async () => {
         markedBy: teacherUser.id,
       })
 
-      await axios.post("http://localhost:5050/api/attendance/mark", {
+      await axios.post("https://school-management-api-gray-gamma.vercel.app/api/attendance/mark", {
         studentId,
         classId: selectedClass,
         subjectId: selectedSubject || null,
@@ -212,7 +212,7 @@ const handleExport = async () => {
         markedBy: teacherUser.id,
       })
 
-      await axios.post("http://localhost:5050/api/attendance/bulk", {
+      await axios.post("https://school-management-api-gray-gamma.vercel.app/api/attendance/bulk", {
         studentIds: selectedStudents,
         classId: selectedClass,
         subjectId: selectedSubject || null,
