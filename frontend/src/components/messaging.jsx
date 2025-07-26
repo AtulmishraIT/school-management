@@ -561,7 +561,7 @@ export function Messaging() {
   useEffect(() => {
     if (!currentUser) return
 
-    const newSocket = io("http://localhost:5050", {
+    const newSocket = io("https://school-management-atulmishra.vercel.app", {
       auth: {
         userId: currentUser?.id,
         userName: currentUser?.name,
