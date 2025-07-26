@@ -8,7 +8,7 @@ import multer from "multer"
 import path from "path"
 import fs from "fs"
 import http from "http"
-import { Server as SocketIO } from "socket.io"
+import { Server } from "socket.io"
 import PDFDocument from "pdfkit"
 import ExcelJS from "exceljs"
 
@@ -44,13 +44,20 @@ dotenv.config({ path: "./.env" })
 
 const app = express()
 const server = http.createServer(app)
-const io = new SocketIO(server, {
+const io = new Server(server, {
   cors: {
-    origin: ["https://school-management-atulmishra.vercel.app"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: "https://school-management-atulmishra.vercel.app",
+    methods: ["GET", "POST"],
     credentials: true,
   },
-})
+});
+io.on("connection", (socket) => {
+  console.log("A user connected:", socket.id);
+
+  socket.on("disconnect", () => {
+    console.log("User disconnected:", socket.id);
+  });
+});
 
 // Middleware
 app.use(cors(
