@@ -54,6 +54,7 @@ export function Login() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center p-4">
+      <div>username: admin@edusync.com</br>password: admin123</div>
       <div className="max-w-md w-full">
         {/* Header */}
         <div className="text-center mb-8">
